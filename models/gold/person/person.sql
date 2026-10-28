@@ -1,7 +1,7 @@
 -- person can be filtered by patients who have an observation period,
 -- but this is not required by the CDM
 SELECT
-    hash(p.subject_id) AS person_id,
+    CAST(hash(p.subject_id) >> 1 AS BIGINT) AS person_id,
     CASE
         WHEN p.gender = 'F' THEN 8532  -- FEMALE
         WHEN p.gender = 'M' THEN 8507  -- MALE

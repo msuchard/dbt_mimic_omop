@@ -247,12 +247,12 @@ GROUP BY
 )
 
 SELECT
-    hash(
+    CAST(hash(
         person_id, 
         drug_concept_id, 
         unit_concept_id, 
         dose_value, 
-        drug_era_end_date) AS dose_era_id,
+        drug_era_end_date) >> 1 AS BIGINT) AS dose_era_id,
     person_id AS person_id,
     drug_concept_id AS drug_concept_id,
     unit_concept_id AS unit_concept_id,

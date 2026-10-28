@@ -61,7 +61,7 @@ notes_with_visit AS (
 
 
 SELECT
-    hash(nwv.raw_note_id) AS note_id,
+    CAST(hash(nwv.raw_note_id) >> 1 AS BIGINT) AS note_id,
     nwv.person_id,
     src.charttime::date AS note_date,
     src.charttime AS note_datetime,

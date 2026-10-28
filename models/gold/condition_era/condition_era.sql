@@ -88,7 +88,7 @@ GROUP BY
 )
 
 SELECT
-    hash(person_id, condition_concept_id, era_end_date) AS condition_era_id,
+    CAST(hash(person_id, condition_concept_id, era_end_date) >> 1 AS BIGINT) AS condition_era_id,
     person_id AS person_id,
     condition_concept_id AS condition_concept_id,
     MIN(condition_start_date) AS condition_era_start_date,
